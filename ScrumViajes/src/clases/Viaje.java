@@ -7,7 +7,7 @@ public class Viaje {
 
 	private String lugar;
 
-	private String fecha;
+	private String fecha = "01/01/2000";
 
 	private double precio;
 
@@ -17,8 +17,9 @@ public class Viaje {
 			this.lugar = lugar;
 		}
 		
-		//asignar el atributo fecha AQUI
-			//funcion que formatea la fecha
+		
+		this.fecha = formatoFecha(dia, mes, ano); 
+		
 		if(precio >= 0) {
 			this.precio = precio;
 		}
@@ -48,4 +49,28 @@ public class Viaje {
 		return lugar;
 	}
 
+	
+	public String formatoFecha(int dia, int mes, int ano)  {
+		
+		String fecha = "";
+		
+		if(dia>0 && dia>=31) {
+			if(dia<=9) {
+				
+			}
+			
+			fecha += dia + "/";	
+		}
+		if(mes>0 && mes<=12) {
+			fecha += mes + "/";
+		
+		}
+		if(ano > 2000) {
+			fecha += ano;
+		}
+		
+		return fecha;
+		
+	}
+	
 }
