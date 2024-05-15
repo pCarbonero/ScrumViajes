@@ -1,14 +1,20 @@
 package clases;
 
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 
+/**
+ * Clase que tiene los metodos para la gestion de la lista de viajes
+ */
 public class GestionViajes {
+	/**
+	 * Lista que contiene todos los viajes
+	 */
 	static ArrayList<Viaje> listaViajes = new ArrayList<>();
-	
-	
-	
-	// metodo que comprueba si el viaje recibido por parámetro ya existe en la lista
+	/**
+	 * metodo que comprueba si el viaje recibido por parámetro ya existe en la lista
+	 * @param v objeto de la clase Viaje
+	 * @return devuelve si ha encontrado un viaje igual o no
+	 */
 	public static boolean existeViaje(Viaje v) {
 		boolean existe = false;
 		if (listaViajes.contains(v)) {
@@ -17,7 +23,11 @@ public class GestionViajes {
 		return existe;
 	}// existeViaje()
 	
-	// método que añade un elemento más a la lista si este no existe
+	/**
+	 * método que añade un elemento más a la lista si este no existe
+	 * @param v objeto de la clase Viaje
+	 * @return devuelve si ha podido realizar la insercion o no
+	 */
 	public static boolean addViaje(Viaje v) {
 		boolean anadido = false;
 		if (!existeViaje(v)) {
@@ -28,6 +38,9 @@ public class GestionViajes {
 		return anadido;
 	}// addViaje()
 	
+	/**
+	 * Metodo que muestra todos los elementos de la lista
+	 */
 	public static void mostrarLista() {
 		if (listaViajes.size() <= 0) {
 			System.out.println();
@@ -39,6 +52,10 @@ public class GestionViajes {
 		}
 	}//
 	
+	/**
+	 * Metodo que añade todos los elementos del fichero a la lista la inicio del programa
+	 * @param v
+	 */
 	public static void recuperarDatos(Viaje v) {
 		listaViajes.add(v);
 	}
