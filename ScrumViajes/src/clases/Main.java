@@ -71,15 +71,15 @@ public class Main {
 		boolean resultado;
 		switch (opc) {
 		case 1->{
-			Gestion.mostrarLista();
+		//	Gestion.mostrarLista();
 		}
 		case 2->{
-			resultado=Gestion.addViaje(pasaObj());
-			if (resultado) {
+			//resultado=Gestion.addViaje(pasaObj());
+			/*if (resultado) {
 				System.out.println("Viaje añadido correctamente");
 			} else {
 				System.out.println("No se ha podido añadir el viaje");
-			}
+			}*/
 		}
 		case 3->{
 			
@@ -103,7 +103,7 @@ public class Main {
 	 * Metodo que envia el objeto con los datos necesarios
 	 * @return
 	 */
-	public static Viaje pasaObj() {
+	/*public static Viaje pasaObj() {
 		Viaje vj = new Viaje();
 
 			System.out.println("Dame el lugar del viaje");
@@ -124,7 +124,7 @@ public class Main {
 			}
 		
 		return vj;
-	}
+	}*/
 	
 	
 
