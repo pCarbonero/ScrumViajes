@@ -1,0 +1,28 @@
+GestionViajes
++ ArrayList: Viaje
+------------------
++ existeViaje(): boolean
++ addViaje(Viaje): boolean
++ mostrarLista()
++ recuperarDatos(Viaje)
++ borrarViaje(Viaje): boolean
++ modificarViaje(Viaje, fecha, precio)
+
+Viaje
+- lugar: String
+- fecha: String
+- precio: double
+----------------
++ Viaje(lugar, fecha, precio)
++ getFecha: String
++ setFecha(fecha)
++ getPrecio(): double
++ setPrecio(precio)
++ getLugar: String
++ validaFecha(fecha)
+
+GestionFichero
++ leerFichero()
++ escribirFichero(Viaje)
+
+
