@@ -68,12 +68,18 @@ public class Main {
 	 * Metodo que entra en la opcion de nuestro menú
 	 */
 	public static void elijeOpcion(int opc) {
+		boolean resultado;
 		switch (opc) {
 		case 1->{
-			//Gestion.mostrarLista();
+			Gestion.mostrarLista();
 		}
 		case 2->{
-			
+			resultado=Gestion.addViaje(pasaObj());
+			if (resultado) {
+				System.out.println("Viaje añadido correctamente");
+			} else {
+				System.out.println("No se ha podido añadir el viaje");
+			}
 		}
 		case 3->{
 			
@@ -99,15 +105,23 @@ public class Main {
 	 */
 	public static Viaje pasaObj() {
 		Viaje vj = new Viaje();
-		
-		try {
+
 			System.out.println("Dame el lugar del viaje");
 			vj.lugar=sc.nextLine();
-		} catch (InputMismatchException e) {
-			System.out.println("El tipo no es el correcto");
-		}
-		
-		
+			
+			try {
+				System.out.println("Dame el precio del viaje");
+				vj.precio=sc.nextLine();
+			} catch (InputMismatchException e) {
+				System.out.println("El tipo no es el correcto");
+			}
+			
+			try {
+				System.out.println("Dame la fecha del viaje con el formato dd/mm/aaaa");
+				vj.fecha=sc.nextLine();
+			} catch (NumberFormatException e) {
+				System.out.println("El tipo no es el correcto");
+			}
 		
 		return vj;
 	}
