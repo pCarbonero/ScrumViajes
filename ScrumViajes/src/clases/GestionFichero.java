@@ -1,8 +1,9 @@
 package clases;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class GestionFichero {
@@ -18,6 +19,16 @@ public class GestionFichero {
 				//nuevoViaje = (partes[1], partes[2], parseInt(partes[3]));
 				//Gestion.addViaje(nuevoViaje);
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}// leer
+	
+	public static void EscribirFichero(/*Viaje v*/) {
+		try {
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt", true));
+			
+			bw.write("a" /*v.toString*/);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
