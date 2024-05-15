@@ -1,36 +1,46 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 
-public class Gestion<T> {
-	/*static T algo;
-	static ArrayList<T> listaViajes = new ArrayList<>();
+public class GestionViajes {
+	static ArrayList<Viaje> listaViajes = new ArrayList<>();
 	
 	
 	
 	// metodo que comprueba si el viaje recibido por parámetro ya existe en la lista
-	public static boolean existeViaje(T t) {
+	public static boolean existeViaje(Viaje v) {
 		boolean existe = false;
-		if (listaViajes.contains(t)) {
+		if (listaViajes.contains(v)) {
 			existe = true;
 		}
 		return existe;
 	}// existeViaje()
 	
 	// método que añade un elemento más a la lista si este no existe
-	public static boolean addViaje(T t) {
+	public static boolean addViaje(Viaje v) {
 		boolean anadido = false;
-		if (!existeViaje(t)) {
-			listaViajes.add(t);
+		if (!existeViaje(v)) {
+			listaViajes.add(v);
+			GestionFichero.EscribirFichero(v);
 			anadido = true;
 		}	
 		return anadido;
 	}// addViaje()
 	
 	public static void mostrarLista() {
-		for (T tt : listaViajes) {
-			System.out.println(tt);
+		if (listaViajes.size() <= 0) {
+			System.out.println();
 		}
+		else {
+			for (Viaje v : listaViajes) {
+				System.out.println(v);
+			}
+		}
+	}//
+	
+	public static void recuperarDatos(Viaje v) {
+		listaViajes.add(v);
 	}
 	
 	/*

@@ -11,24 +11,26 @@ public class GestionFichero {
 	public static void leerFichero() {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/ficheros/datosTurismo.txt"));
-			String a;
+			String linea;
 			String[] partes = new String[3];
-			while((a = br.readLine()) != null) {
-				//Viaje nuevoViaje = new Viaje(-,-,-);
-				partes = a.split(":");
-				//nuevoViaje = (partes[1], partes[2], parseInt(partes[3]));
-				//Gestion.addViaje(nuevoViaje);
+			while((linea = br.readLine()) != null) {
+				Viaje nuevoViaje = null;
+				partes = linea.split("::");
+				nuevoViaje = new Viaje(partes[0], partes[1], Double.parseDouble(partes[2]));
+				GestionViajes.recuperarDatos(nuevoViaje);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}// leer
 	
-	public static void EscribirFichero(/*Viaje v*/) {
+	public static void EscribirFichero(Viaje v) {
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt", true));
-			
-			bw.write("a" /*v.toString*/);
+			BufferedWriter bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt", true));		
+			bw.newLine();
+			bw.write(v.toString());
+			bw.flush();
+			bw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
