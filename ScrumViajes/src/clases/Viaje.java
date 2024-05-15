@@ -99,7 +99,7 @@ public class Viaje {
 	public String toString() {
 		String cadena = "";
 
-		cadena += this.lugar + "::" + this.fecha + "::" + this.precio + "\n";
+		cadena += this.lugar + "::" + this.fecha + "::" + this.precio;
 
 		return cadena;
 	}

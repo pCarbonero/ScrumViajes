@@ -37,8 +37,8 @@ public class GestionFichero {
 	public static void EscribirFichero(Viaje v) {
 		try {
 			BufferedWriter bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt", true));		
-			bw.newLine();
 			bw.write(v.toString());
+			bw.newLine();
 			bw.flush();
 			bw.close();
 		} catch (IOException e) {
