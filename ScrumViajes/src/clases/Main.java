@@ -75,29 +75,89 @@ public class Main {
 				System.out.println("No se ha podido añadir el viaje");
 			}
 		}
-		/*case 3 -> {
-
+		case 3 -> {
+			modificado();
 		}
 		case 4 -> {
-
+			borrado();
 		}
 		case 5 -> {
-
-		}*/
+			GestionFichero.EscribirFichero();
+		}
 		case 6 -> {
 			System.out.println("Has salido ");
 		}
 		default -> {
-			System.out.println("oción no válida ");
+			System.out.println("opción no válida ");
 		}
 		}
 	}
 
-	/**
-	 * Metodo que envia el objeto con los datos necesarios
-	 * 
-	 * @return
-	 */
+	public static void modificado() {
+		String lugarAModificar;
+		int index;
+		int opcMod = 0;
+		double nuevoPrecio = 0;
+		String nuevaFecha = "";
+		System.out.println("Dime un lugar ");
+		lugarAModificar = sc.nextLine();
+		if(GestionViajes.listarLugares(lugarAModificar)) {
+			System.out.println("Que lugar quieres modificar ");
+			index = sc.nextInt()-1;
+			sc.nextLine();
+			System.out.println("¿Que quieres modificar?");
+			do {
+				try {
+					System.out.println("1. Precio");
+					System.out.println("2. Fecha");
+					opcMod = sc.nextInt();
+					sc.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("No es válido");
+				}
+			} while (opcMod < 1 && opcMod > 2);
+			
+			if (opcMod == 1) {
+				System.out.println("Introduzca el nuevo precio ");
+				nuevoPrecio = sc.nextDouble();
+				sc.nextLine();
+				if (GestionViajes.modificarViaje(index, nuevoPrecio)) {
+					System.out.println("Modificación realizada correctamente ");
+				}else {
+					System.out.println("Error. No se pudo modificar.");
+				}
+			}// opc 1
+			
+			if (opcMod == 2) {
+				System.out.println("Introduzca la nueva fecha ");
+				nuevaFecha = sc.nextLine();
+				if (GestionViajes.modificarViaje(index, nuevaFecha)) {
+					System.out.println("Modificación realizada correctamente ");
+				}else {
+					System.out.println("Error. No se pudo modificar.");
+				}
+			}// opc 1
+
+		}// 
+	}
+
+	public static void borrado() {
+		String lugarABorrar;
+		int index;
+		System.out.println("Dime un lugar ");
+		lugarABorrar = sc.nextLine();
+		if(GestionViajes.listarLugares(lugarABorrar)) {
+			System.out.println("QUE VIAJE QUIERES BORRAR");
+			index = sc.nextInt()-1;
+			if(GestionViajes.borrarViaje(index)) {
+				System.out.println("Viaje borrado correctamente ");
+			}else {
+				System.out.println("Hubo un error. No se pudo borrar el viaje ");
+			}
+		}
+	}// 
+
+	// 
 	public static Viaje pasaObj() {
 		String lugar;
 		String fecha;

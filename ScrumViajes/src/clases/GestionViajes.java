@@ -11,6 +11,10 @@ public class GestionViajes {
 	 */
 	static ArrayList<Viaje> listaViajes = new ArrayList<>();
 	/**
+	 * 
+	 */
+	static ArrayList<Viaje> listaLugares = new ArrayList<>();
+	/**
 	 * metodo que comprueba si el viaje recibido por parámetro ya existe en la lista
 	 * @param v objeto de la clase Viaje
 	 * @return devuelve si ha encontrado un viaje igual o no
@@ -32,7 +36,6 @@ public class GestionViajes {
 		boolean anadido = false;
 		if (!existeViaje(v)) {
 			listaViajes.add(v);
-			GestionFichero.EscribirFichero(v);
 			anadido = true;
 		}	
 		return anadido;
@@ -60,29 +63,74 @@ public class GestionViajes {
 		listaViajes.add(v);
 	}
 	
-	/*
-	public boolean borrarViaje(String lugar) {
-		boolean borrado = false;
-		int cont = 0;
-		for (T t2: listaViajes) {
-			/*if (t2.getLugar().equals(lugar)){
-			  listaViajes.remove(cont);
-			  borrado = true;
+	public static boolean listarLugares(String lugar) {
+		int cont = 1;
+		boolean siHay = true;
+		for (Viaje v : listaViajes) {
+			if (v.getLugar().equals(lugar)) {
+				System.out.println(cont + ": " + v);
+				listaLugares.add(v);
+				cont++;
 			}
-			cont ++;
-		}	
-		return borrado;
-	}
+		}// for
+		if (listaLugares.size() == 0) {
+			siHay = false;
+		}
+		return siHay;
+	}// ()
 	
-	public int buscarViaje(String lugar, String fecha) {
-		int index = -1;
-		int cont = 0;
-		while (cont < listaViajes.size()) {
-			/*if (t2.getLugar().equals(lugar) && t2.getFecha().equals(fecha)){
-			  listaViajes.remove(cont);
+	/**
+	 * 
+	 * @param index
+	 */
+	public static boolean borrarViaje(int index) {
+		int i = 0;
+		boolean borrado = false;
+		while(i < listaViajes.size() && !borrado) {
+			if(listaLugares.get(index).equals(listaViajes.get(i))) {
+				listaViajes.remove(i);
+				borrado = true;
+				listaLugares.clear();
 			}
-			cont ++;
-		}	
-		return index;
-	}*/
+			i++;
+		}
+		return borrado;
+	}// borrarViaje
+	
+	/**
+	 * 
+	 * @param index
+	 * @param precio
+	 * @return
+	 */
+	public static boolean modificarViaje(int index, double precio) {
+		int i = 0;
+		boolean modificado = false;
+		while(i < listaViajes.size() && !modificado) {
+			if(listaLugares.get(index).equals(listaViajes.get(i))) {
+				listaViajes.get(i).setPrecio(precio);
+				modificado = true;
+				listaLugares.clear();
+			}
+			i++;
+		}
+		return modificado;
+	}// modificarViaje
+	
+	public static boolean modificarViaje(int index, String fecha) {
+		int i = 0;
+		boolean modificado = false;
+		while(i < listaViajes.size() && !modificado) {
+			if(listaLugares.get(index).equals(listaViajes.get(i))) {
+				listaViajes.get(i).setFecha(fecha);
+				modificado = true;
+				listaLugares.clear();
+			}
+			i++;
+		}
+		return modificado;
+	}// modificarViaje
+	
+	
+	
 }// class

@@ -34,15 +34,23 @@ public class GestionFichero {
 	 * Metodo que se encarga de registrar en el fichero un nuevo viaje insertado en la lista
 	 * @param v objeto de la clase Viaje
 	 */
-	public static void EscribirFichero(Viaje v) {
+	public static void EscribirFichero() {
+		BufferedWriter bw = null;
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt", true));		
-			bw.write(v.toString());
-			bw.newLine();
-			bw.flush();
-			bw.close();
+			bw = new BufferedWriter(new FileWriter("src/ficheros/datosTurismo.txt"));	
+			for (Viaje v : GestionViajes.listaViajes) {
+				bw.write(v.toString());
+				bw.newLine();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-	}
+		}finally {
+			try {
+				bw.flush();
+				bw.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}// finally
+	}// EscrbirFichero()
 }
