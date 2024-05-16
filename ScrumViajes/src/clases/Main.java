@@ -14,7 +14,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//cargamos el fichero en la lista
+		// cargamos el fichero en la lista
 		GestionFichero.leerFichero();
 		// Inicialimos la variable opción
 		int opc;
@@ -34,7 +34,6 @@ public class Main {
 				}
 			} while (opc < 0);
 		} while (opc != 6);
-		
 
 		// Cerramos el escaner
 		sc.close();
@@ -95,16 +94,24 @@ public class Main {
 
 	public static void modificado() {
 		String lugarAModificar;
-		int index;
+		int index = -1;
 		int opcMod = 0;
 		double nuevoPrecio = 0;
 		String nuevaFecha = "";
 		System.out.println("Dime un lugar ");
 		lugarAModificar = sc.nextLine();
-		if(GestionViajes.listarLugares(lugarAModificar)) {
-			System.out.println("Que lugar quieres modificar ");
-			index = sc.nextInt()-1;
-			sc.nextLine();
+		if (GestionViajes.listarLugares(lugarAModificar)) {
+			do {
+				try {
+					System.out.println("Que lugar quieres modificar ");
+					index = sc.nextInt() - 1;
+					sc.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("No válido");
+					sc.nextLine();
+				}
+			} while (index < 0 || index > GestionViajes.listaViajes.size());
+
 			System.out.println("¿Que quieres modificar?");
 			do {
 				try {
@@ -115,30 +122,30 @@ public class Main {
 				} catch (InputMismatchException e) {
 					System.out.println("No es válido");
 				}
-			} while (opcMod < 1 && opcMod > 2);
-			
+			} while (opcMod < 1 || opcMod > 2);
+
 			if (opcMod == 1) {
 				System.out.println("Introduzca el nuevo precio ");
 				nuevoPrecio = sc.nextDouble();
 				sc.nextLine();
 				if (GestionViajes.modificarViaje(index, nuevoPrecio)) {
 					System.out.println("Modificación realizada correctamente ");
-				}else {
+				} else {
 					System.out.println("Error. No se pudo modificar.");
 				}
-			}// opc 1
-			
+			} // opc 1
+
 			if (opcMod == 2) {
 				System.out.println("Introduzca la nueva fecha ");
 				nuevaFecha = sc.nextLine();
 				if (GestionViajes.modificarViaje(index, nuevaFecha)) {
 					System.out.println("Modificación realizada correctamente ");
-				}else {
+				} else {
 					System.out.println("Error. No se pudo modificar.");
 				}
-			}// opc 1
+			} // opc 1
 
-		}// 
+		}
 	}
 
 	public static void borrado() {
@@ -146,18 +153,18 @@ public class Main {
 		int index;
 		System.out.println("Dime un lugar ");
 		lugarABorrar = sc.nextLine();
-		if(GestionViajes.listarLugares(lugarABorrar)) {
+		if (GestionViajes.listarLugares(lugarABorrar)) {
 			System.out.println("QUE VIAJE QUIERES BORRAR");
-			index = sc.nextInt()-1;
-			if(GestionViajes.borrarViaje(index)) {
+			index = sc.nextInt() - 1;
+			if (GestionViajes.borrarViaje(index)) {
 				System.out.println("Viaje borrado correctamente ");
-			}else {
+			} else {
 				System.out.println("Hubo un error. No se pudo borrar el viaje ");
 			}
 		}
-	}// 
+	}//
 
-	// 
+	//
 	public static Viaje pasaObj() {
 		String lugar;
 		String fecha;
