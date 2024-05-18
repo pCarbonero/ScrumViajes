@@ -8,18 +8,15 @@ public class Main {
 	// Inicializamos el escaner en estatico
 	static Scanner sc = new Scanner(System.in);
 
-	/**
-	 * Clase main de nuestra Agencia de viajes
-	 * 
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// cargamos el fichero en la lista
 		GestionFichero.leerFichero();
 		// Inicialimos la variable opción
 		int opc;
 
+		// bucle que se reoite hasta que se elija una opción válida
 		do {
+			// bucle que se repite si no se inserta un valor correcto
 			do {
 				opc = -1;
 				// Lanzamos el metodo muestra menú
@@ -39,9 +36,8 @@ public class Main {
 		sc.close();
 	}
 
-	/**
-	 * Metodo que muestra un menú con las opciones de nuestro programa
-	 */
+
+	// Metodo que muestra un menú con las opciones de nuestro programa 
 	public static void muestraMenu() {
 		System.out.println("========================");
 		System.out.println("-         Menú         -");
@@ -55,9 +51,7 @@ public class Main {
 		System.out.println("========================");
 	}
 
-	/**
-	 * Metodo que entra en la opcion de nuestro menú
-	 */
+	// Metodo que entra en la opcion de nuestro menú
 	public static void elijeOpcion(int opc) {
 		boolean resultado;
 		switch (opc) {
@@ -92,6 +86,7 @@ public class Main {
 		}
 	}
 
+	// metodo que se encarga de pedir la info necesaria para modificar un viaje
 	public static void modificado() {
 		String lugarAModificar;
 		int index = -1;
@@ -143,11 +138,12 @@ public class Main {
 				} else {
 					System.out.println("Error. No se pudo modificar.");
 				}
-			} // opc 1
+			} // opc 2
 
 		}
 	}
 
+	// metodo que se encarga de pedir la info necesaria para borrar un viaje
 	public static void borrado() {
 		String lugarABorrar;
 		int index;
@@ -164,7 +160,7 @@ public class Main {
 		}
 	}//
 
-	//
+	// metodo que se encarga decrear un objeto de la clase Viaje
 	public static Viaje pasaObj() {
 		String lugar;
 		String fecha;

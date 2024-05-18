@@ -11,7 +11,7 @@ public class GestionViajes {
 	 */
 	static ArrayList<Viaje> listaViajes = new ArrayList<>();
 	/**
-	 * 
+	 * Lista que almacenara viajes con un mismo destino
 	 */
 	static ArrayList<Viaje> listaLugares = new ArrayList<>();
 	/**
@@ -57,12 +57,17 @@ public class GestionViajes {
 	
 	/**
 	 * Metodo que añade todos los elementos del fichero a la lista la inicio del programa
-	 * @param v
+	 * @param v viaja a añadir
 	 */
 	public static void recuperarDatos(Viaje v) {
 		listaViajes.add(v);
 	}
 	
+	/**
+	 * Metodo que se encarga de crear una nueva lista con los viajes con mismo destino
+	 * @param lugar el destino del viaje
+	 * @return si se ha podido dcrear la lista
+	 */
 	public static boolean listarLugares(String lugar) {
 		int cont = 1;
 		boolean siHay = true;
@@ -80,8 +85,8 @@ public class GestionViajes {
 	}// ()
 	
 	/**
-	 * 
-	 * @param index
+	 * Metodo que se encarga de borrar un viaje de la lista principal
+	 * @param index posicion del viaje en la lista de lugares
 	 */
 	public static boolean borrarViaje(int index) {
 		int i = 0;
@@ -98,10 +103,10 @@ public class GestionViajes {
 	}// borrarViaje
 	
 	/**
-	 * 
-	 * @param index
-	 * @param precio
-	 * @return
+	 * Metodo que modfica el precio de un viaje
+	 * @param index posicion del viaje en la lista de lugares
+	 * @param precio el nuevo precio del viaje
+	 * @return si ha sido modificada con exito
 	 */
 	public static boolean modificarViaje(int index, double precio) {
 		int i = 0;
@@ -117,6 +122,12 @@ public class GestionViajes {
 		return modificado;
 	}// modificarViaje
 	
+	/**
+	 * Metodo que modfica la fecha de un viaje
+	 * @param index posicion del viaje en la lista de lugares
+	 * @param la nueva fecha del viaje
+	 * @return si ha sido modificada con exito
+	 */
 	public static boolean modificarViaje(int index, String fecha) {
 		int i = 0;
 		boolean modificado = false;
