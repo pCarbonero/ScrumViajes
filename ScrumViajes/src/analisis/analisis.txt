@@ -1,5 +1,6 @@
 GestionViajes
 + ArrayList: Viaje
++ Arraylist: Viaje
 ------------------
 + existeViaje(): boolean
 + addViaje(Viaje): boolean
